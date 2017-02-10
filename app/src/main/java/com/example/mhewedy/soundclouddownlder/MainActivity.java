@@ -3,7 +3,6 @@ package com.example.mhewedy.soundclouddownlder;
 import android.app.DownloadManager;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.design.widget.FloatingActionButton;
@@ -15,17 +14,7 @@ import android.util.Pair;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
 
-import java.io.BufferedInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.URL;
-import java.net.URLConnection;
-import java.util.ArrayList;
-
-import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.functions.Func1;
@@ -83,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void downloadMp3(String title, String mp3Url) {
         DownloadManager.Request r = new DownloadManager.Request(Uri.parse(mp3Url));
-        r.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, title + ".mp3");
+        r.setDestinationInExternalPublicDir(Environment.DIRECTORY_MUSIC, title + ".mp3");
         r.allowScanningByMediaScanner();
         r.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
         DownloadManager dm = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
